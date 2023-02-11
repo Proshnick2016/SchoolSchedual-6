@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, ScrollView, AsyncStorage } from "react-native";
+import { View, ScrollView } from "react-native";
 import SchedualRendering from "../components/SchedualRendering";
 import schedualStyles from "../styles/schedualStyles";
 import Notification from "../components/Notification";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Schedual() {
     const [countLoops, setInfiniteLoop] = useState(0);

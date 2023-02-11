@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, TouchableOpacity, AsyncStorage } from "react-native";
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { postHttp, parseSchoolWeekPage, formLessonsInfo } from '../components/logInData';
 import homePageStyles from "../styles/homePageStyles";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomePage({ navigation }) {
 

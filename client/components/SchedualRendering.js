@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, FlatList, AsyncStorage, SafeAreaView } from "react-native";
+import { Text, FlatList, SafeAreaView } from "react-native";
 import schedualStyles from "../styles/schedualStyles";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SchedualRendering({ weekDayName }) {
     const [weekDayArray, setWeekDayArray] = React.useState();
