@@ -9,8 +9,8 @@ export default function Schedual() {
     const [countLoops, setInfiniteLoop] = useState(0);
 
     const [countLessons, setCountLessons] = useState(0); // номер урока
-    const [nextLessonHours, setNextLessonHours] = useState(8); //8
-    const [nextLessonMinutes, setNextLessonMinutes] = useState(0); // 0
+    const [nextLessonHours, setNextLessonHours] = useState(8); //8 часов
+    const [nextLessonMinutes, setNextLessonMinutes] = useState(0); // 0 минут
 
     async function setNewDataAboutLesson(lessonNumber) {
         let schedual = await AsyncStorage.getItem('Schedual');
@@ -59,7 +59,7 @@ export default function Schedual() {
             } else {
                 setInfiniteLoop(countLoops + 1);
             }
-        }, 5000); // 120000
+        }, 120000); // 5000 для теста
     });
 
     return (
