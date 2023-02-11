@@ -8,8 +8,8 @@ export default function Schedual() {
     const [countLoops, setInfiniteLoop] = useState(0);
 
     const [countLessons, setCountLessons] = useState(0); // номер урока
-    const [nextLessonHours, setNextLessonHours] = useState(13); //8
-    const [nextLessonMinutes, setNextLessonMinutes] = useState(33); // 0
+    const [nextLessonHours, setNextLessonHours] = useState(8); //8
+    const [nextLessonMinutes, setNextLessonMinutes] = useState(0); // 0
 
     async function setNewDataAboutLesson(lessonNumber) {
         let schedual = await AsyncStorage.getItem('Schedual');
@@ -17,24 +17,23 @@ export default function Schedual() {
         let date = new Date();
         let weekDays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
         let day = 1;
-        /*if (date.getDay() === 0) {
+        if (date.getDay() === 0) {
             day = 6;
         } else {
             day = date.getDay();
-        }*/
-        const textMinutes = [34, 35, 36, 37, 38, 39, 40]
-        // условие, если уроков на сегодня больше нет, то меняем данные об уроке на урок следующего дня (убрать условие из useEffet) 
-        let nextLesson = JSON.parse(schedual)[weekDays[day]][lessonNumber]['lessonName'];
-        Notification.schoolSchedualNotification("Следующий урок", nextLesson)
+        }
 
         if (JSON.parse(schedual)[weekDays[day]].length - 1 > lessonNumber) {
+            let nextLesson = JSON.parse(schedual)[weekDays[day]][lessonNumber]['lessonName'];
+            Notification.schoolSchedualNotification("Следующий урок", nextLesson)
+
             let lessonHours = JSON.parse(schedual)[weekDays[day]][lessonNumber + 1]['lessonTime'];
             let nextLessonHours = parseInt(lessonHours[lessonHours.length - 5]) * 10 + parseInt(lessonHours[lessonHours.length - 4]);
-            setNextLessonHours(13);
+            setNextLessonHours(nextLessonHours);
 
             let lessonMinutes = JSON.parse(schedual)[weekDays[day]][lessonNumber + 1]['lessonTime'];
             let nextLessonMinutes = parseInt(lessonMinutes[lessonMinutes.length - 2]) * 10 + parseInt(lessonMinutes[lessonMinutes.length - 1]);
-            setNextLessonMinutes(textMinutes[lessonNumber]);
+            setNextLessonMinutes(nextLessonMinutes);
 
             setCountLessons(countLessons + 1);
         } else {
